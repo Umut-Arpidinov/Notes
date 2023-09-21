@@ -1,16 +1,19 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
 }
+
+apply from: '../shared_dependency.gradle'
 
 android {
     namespace 'com.example.notesapp'
-    compileSdk 33
+    compileSdk versions.compileSdk
 
     defaultConfig {
         applicationId "com.example.notesapp"
-        minSdk 24
-        targetSdk 33
+        minSdk versions.minSdk
+        targetSdk versions.targetSdk
         versionCode 1
         versionName "1.0"
 
@@ -23,16 +26,27 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    buildFeatures {
+        viewBinding true
+    }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '17'
     }
 }
 
 dependencies {
+
+
+
+    //dagger
+
+    kapt "com.google.dagger:dagger-compiler:${versions.dagger}"
+
+    kapt "androidx.room:room-compiler:${versions.room}"
 
     implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'

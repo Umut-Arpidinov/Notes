@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/hav_main"
+    app:startDestination="@id/notesFragment">
+
+    <fragment
+        android:id="@+id/notesFragment"
+        android:name="com.example.notesapp.ui.notes.NotesFragment"
+        tools:layout="@layout/fragment_notes"
+        android:label="NotesFragment" />
+    <fragment
+        android:id="@+id/searchFragment"
+        tools:layout="@layout/fragment_search"
+        android:name="com.example.notesapp.ui.search.SearchFragment"
+        android:label="SearchFragment" />
+    <fragment
+        android:id="@+id/eventFragment"
+        tools:layout="@layout/fragment_event"
+        android:name="com.example.notesapp.ui.event.EventFragment"
+        android:label="EventFragment" />
+    <fragment
+        android:id="@+id/newNoteFragment"
+        tools:layout="@layout/fragment_new_note"
+        android:name="com.example.notesapp.ui.create_note.NewNoteFragment"
+        android:label="NewNoteFragment" />
+</navigation>
