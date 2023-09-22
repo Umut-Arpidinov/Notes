@@ -6,4 +6,5 @@ import com.example.notesapp.databinding.FragmentSearchBinding
 class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewModel>() {
     override fun getViewModelClass(): Class<SearchViewModel> = SearchViewModel::class.java
     override fun getViewBinding(): FragmentSearchBinding = FragmentSearchBinding.inflate(layoutInflater)
+
 }

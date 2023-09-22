@@ -1,8 +1,8 @@
 package com.example.notesapp.ui.notes
 
-import android.widget.Toast
 import com.example.notesapp.base.BaseFragment
 import com.example.notesapp.databinding.FragmentNotesBinding
+import com.example.notesapp.ui.extensions.showSnackBar
 
 class NotesFragment : BaseFragment<FragmentNotesBinding, NotesViewModel>() {
 
@@ -12,11 +12,15 @@ class NotesFragment : BaseFragment<FragmentNotesBinding, NotesViewModel>() {
 
     override fun setUpViews() {
         super.setUpViews()
+        binding.tv.setOnClickListener {
+            showSnackBar("Clicked")
+        }
 
     }
 
     override fun setUpListener() {
         super.setUpListener()
+
     }
 
     override fun observeData() {
