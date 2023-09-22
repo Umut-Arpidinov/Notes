@@ -12,9 +12,7 @@ class NotesFragment : BaseFragment<FragmentNotesBinding, NotesViewModel>() {
 
     override fun setUpViews() {
         super.setUpViews()
-        binding.tv.setOnClickListener {
-            showSnackBar("Clicked")
-        }
+
 
     }
 

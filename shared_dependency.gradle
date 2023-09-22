@@ -8,6 +8,7 @@ dependencies {
     implementation "io.reactivex.rxjava3:rxjava:${versions.rxJava}"
     implementation "androidx.room:room-runtime:$versions.room"
     implementation "androidx.room:room-rxjava3:$versions.room"
+    implementation "de.hdodenhof:circleimageview:${versions.circleImage}"
 
 
 }
