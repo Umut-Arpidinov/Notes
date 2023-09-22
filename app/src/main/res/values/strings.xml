@@ -2,4 +2,15 @@
     <string name="app_name">NotesApp</string>
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_1">Manage your\nnotes easily</string>
+    <string name="title_2">Organize your\nthoughts</string>
+    <string name="title_3">Create cards and\neasy styling</string>
+    <string name="title_1_description">A completely easy way to manage and customize\nyour notes.</string>
+    <string name="title_2_description">Most beautiful note taking application.\n </string>
+    <string name="title_3_description">Making your content legible has never been\neasier.</string>
+    <string name="btn_message_next">Next</string>
+    <string name="btn_message_get_started">Get started</string>
+    <string name="msg_skip">Skip</string>
+    <string name="msg_back">Back</string>
+
 </resources>

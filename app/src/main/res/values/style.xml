@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="BlueTextStyle">
+        <item name="android:textColor">@color/blue_2</item>
+        <item name="fontFamily">@font/nunito_sans_semi_bold</item>
+    </style>
+
+    <style name="TitleTextStyle">
+        <item name="android:textColor">@color/black</item>
+        <item name="fontFamily">@font/nunito_sans_bold</item>
+        <item name="android:textSize">32.81sp</item>
+    </style>
+    <style name="TitleDescriptionStyle">
+        <item name="android:textColor">@color/black_2</item>
+        <item name="fontFamily">@font/nunito_sans_regular</item>
+        <item name="android:textSize">14.96sp</item>
+    </style>
+    <style name="WelcomeCardViewStyle">
+        <item name="strokeColor">@color/transparent</item>
+        <item name="android:backgroundTint">@color/white_3</item>
+        <item name="cornerSize">20dp</item>
+    </style>
+</resources>
