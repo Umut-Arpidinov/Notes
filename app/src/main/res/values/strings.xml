@@ -12,5 +12,14 @@
     <string name="btn_message_get_started">Get started</string>
     <string name="msg_skip">Skip</string>
     <string name="msg_back">Back</string>
+    <string name="msg_search">Search</string>
+    <string name="msg_notes_title">Notes</string>
+    <string name="title_date">22 December, 2021</string>
+    <string name="msg_all_notes">All Notes</string>
+    <string name="msg_favourites">Favourites</string>
+    <string name="msg_hidden">Hidden</string>
+    <string name="msg_trash">Trash</string>
+    <string name="msg_recent_notes">Recent notes</string>
+
 
 </resources>

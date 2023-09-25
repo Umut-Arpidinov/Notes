@@ -42,18 +42,18 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card_view"
+        style="@style/WelcomeCardViewStyle"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        style="@style/WelcomeCardViewStyle"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/iv_welcome">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="center"
-            >
+            android:layout_gravity="center">
 
             <TextView
                 android:id="@+id/tv_welcome"
@@ -74,27 +74,26 @@
                 style="@style/TitleDescriptionStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/title_3_description"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintBottom_toTopOf="b"
-                app:layout_constraintTop_toBottomOf="@id/tv_welcome"
                 android:gravity="center"
                 android:padding="8dp"
-                />
+                android:text="@string/title_3_description"
+                app:layout_constraintBottom_toTopOf="b"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_welcome" />
+
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_next_welcome"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_welcome_description"
-                android:backgroundTint="@color/blue_2"
                 android:layout_marginHorizontal="25dp"
                 android:layout_marginTop="23dp"
+                android:backgroundTint="@color/blue_2"
                 android:text="@string/btn_message_next"
                 app:cornerRadius="14dp"
-                />
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_welcome_description" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 
