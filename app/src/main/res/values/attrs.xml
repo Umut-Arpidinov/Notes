@@ -2,6 +2,8 @@
 <resources>
     <declare-styleable name="CustomNotesCategoryView">
         <attr name="category_name" format="string" />
-        <attr name="android:src" format="integer" />
+        <attr name="category_icon" format="reference" />
+        <attr name="category_color" format="reference"/>
+        <attr name="category_background" format="reference"/>
     </declare-styleable>
 </resources>

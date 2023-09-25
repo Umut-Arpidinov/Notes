@@ -7,4 +7,10 @@
     android:orientation="horizontal"
     >
 
+    <com.example.notesapp.ui.views.CustomNotesCategoryView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:category_name="@string/msg_all_notes"
+        />
+
 </LinearLayout>

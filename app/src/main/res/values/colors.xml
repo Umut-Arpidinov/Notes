@@ -7,8 +7,11 @@
     <color name="transparent">#00000000</color>
     <color name="blue">#3A85F7</color>
     <color name="blue_2">#007AFF</color>
+    <color name="blue_3">#4E94F8</color>
     <color name="black_2">#1C2121</color>
     <color name="gray">#3C3C43</color>
     <color name="gray_2">#8E8E92</color>
+    <color name="yellow">#F7CE45</color>
+    <color name="red">#EB4D3D</color>
 
 </resources>
