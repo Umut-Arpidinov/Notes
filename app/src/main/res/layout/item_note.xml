@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/custom_default_shape"
+    android:layout_margin="6dp"
+    app:cardCornerRadius="10dp">
+
+    <LinearLayout
+        android:id="@+id/lienar_child"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+
+
+        <TextView
+            android:id="@+id/tv_note_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/msg_important"
+            android:fontFamily="@font/nunito_sans_semi_bold"
+            android:paddingStart="15dp"
+            android:paddingEnd="261dp"
+            android:layout_marginTop="5dp"
+            android:textSize="15sp"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:background="@color/gray_2"
+            android:layout_marginHorizontal="15dp"
+            android:layout_height="0.5dp"/>
+
+        <TextView
+            android:id="@+id/tv_note_body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito_sans_regular"
+            android:paddingStart="15dp"
+            android:layout_marginTop="5dp"
+            android:paddingEnd="15dp"
+            android:text="@string/msg_lorem_ipsum"
+            android:textSize="15sp" />
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

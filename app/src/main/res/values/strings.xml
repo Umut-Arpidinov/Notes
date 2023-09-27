@@ -20,6 +20,10 @@
     <string name="msg_hidden">Hidden</string>
     <string name="msg_trash">Trash</string>
     <string name="msg_recent_notes">Recent notes</string>
+    <string name="msg_important">Important</string>
+    <string name="msg_lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam cum ligula justo.</string>
+
+
 
 
 </resources>

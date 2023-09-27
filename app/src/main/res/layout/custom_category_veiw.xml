@@ -4,33 +4,55 @@
     android:id="@+id/linear_parent"
     android:layout_width="168dp"
     android:layout_height="50dp"
-    android:background="@drawable/edit_text_background"
     android:orientation="horizontal"
-    app:cardCornerRadius="10dp"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent">
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/iv_category_note"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="15dp"
-        android:layout_gravity="center_vertical"
-        android:background="@drawable/circle_background"
-        android:scaleType="center"
-        android:src="@drawable/ic_notes"
-        app:shapeAppearanceOverlay="@style/Circular" />
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_view_category"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
 
-    <TextView
-        android:id="@+id/tv_notes_category"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_marginStart="10dp"
-        android:fontFamily="@font/nunito_sans_semi_bold"
-        android:text="@string/msg_all_notes"
-        android:textSize="16sp" />
+        app:strokeWidth="0dp">
+
+        <LinearLayout
+            android:id="@+id/linear_child_card_view"
+            android:layout_width="match_parent"
+            android:background="@drawable/all_notes_background"
+            android:checkable="true"
+            android:focusable="true"
+            android:clickable="true"
+            app:checkedIcon="@null"
+            android:focusableInTouchMode="true"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_category_note"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="15dp"
+                android:background="@drawable/circle_background"
+                android:scaleType="center"
+                android:src="@drawable/ic_notes"
+                app:shapeAppearanceOverlay="@style/Circular" />
+
+            <TextView
+                android:id="@+id/tv_notes_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/nunito_sans_semi_bold"
+                android:text="@string/msg_all_notes"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
 </LinearLayout>
+
 
 

@@ -1,8 +1,11 @@
 package com.example.notesapp.ui.notes
 
+import androidx.core.content.ContextCompat
+import com.example.notesapp.R
 import com.example.notesapp.base.BaseFragment
 import com.example.notesapp.databinding.FragmentNotesBinding
 import com.example.notesapp.ui.extensions.showSnackBar
+import com.example.notesapp.ui.views.CustomNotesCategoryView
 
 class NotesFragment : BaseFragment<FragmentNotesBinding, NotesViewModel>() {
 
@@ -12,11 +15,9 @@ class NotesFragment : BaseFragment<FragmentNotesBinding, NotesViewModel>() {
 
     override fun setUpViews() {
         super.setUpViews()
-
-
     }
 
-    override fun setUpListener() {
+    override fun setUpListener() = with(binding) {
         super.setUpListener()
 
     }
@@ -24,6 +25,5 @@ class NotesFragment : BaseFragment<FragmentNotesBinding, NotesViewModel>() {
     override fun observeData() {
         super.observeData()
     }
-
 
 }

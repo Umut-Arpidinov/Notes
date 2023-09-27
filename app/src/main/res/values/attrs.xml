@@ -4,6 +4,8 @@
         <attr name="category_name" format="string" />
         <attr name="category_icon" format="reference" />
         <attr name="category_color" format="reference"/>
+        <attr name="cardBackgroundColor"/>
+        <attr name="backgroundTint"/>
         <attr name="category_background" format="reference"/>
     </declare-styleable>
 </resources>

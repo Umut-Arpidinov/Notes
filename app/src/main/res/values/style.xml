@@ -22,7 +22,7 @@
         <item name="cornerSize">20dp</item>
     </style>
     <style name="SearchEditTextStyle">
-        <item name="android:background">@drawable/edit_text_background</item>
+        <item name="android:background">@drawable/custom_default_shape</item>
     </style>
     <style name="Circular">
         <item name="cornerSize">50%</item>
