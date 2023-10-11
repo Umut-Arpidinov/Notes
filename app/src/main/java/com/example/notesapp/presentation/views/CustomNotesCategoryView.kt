@@ -1,7 +1,6 @@
-package com.example.notesapp.ui.views
+package com.example.notesapp.presentation.views
 
 import android.content.Context
-import android.content.res.ColorStateList
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.LayoutInflater

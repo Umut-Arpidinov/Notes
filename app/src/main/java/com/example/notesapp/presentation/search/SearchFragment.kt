@@ -1,4 +1,4 @@
-package com.example.notesapp.ui.search
+package com.example.notesapp.presentation.search
 
 import com.example.notesapp.base.BaseFragment
 import com.example.notesapp.databinding.FragmentSearchBinding

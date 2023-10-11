@@ -7,22 +7,22 @@
 
     <fragment
         android:id="@+id/notesFragment"
-        android:name="com.example.notesapp.ui.notes.NotesFragment"
+        android:name="com.example.notesapp.presentation.notes.NotesFragment"
         tools:layout="@layout/fragment_notes"
         android:label="NotesFragment" />
     <fragment
         android:id="@+id/searchFragment"
         tools:layout="@layout/fragment_search"
-        android:name="com.example.notesapp.ui.search.SearchFragment"
+        android:name="com.example.notesapp.presentation.search.SearchFragment"
         android:label="SearchFragment" />
     <fragment
         android:id="@+id/eventFragment"
         tools:layout="@layout/fragment_event"
-        android:name="com.example.notesapp.ui.event.EventFragment"
+        android:name="com.example.notesapp.presentation.event.EventFragment"
         android:label="EventFragment" />
     <fragment
         android:id="@+id/newNoteFragment"
         tools:layout="@layout/fragment_new_note"
-        android:name="com.example.notesapp.ui.create_note.NewNoteFragment"
+        android:name="com.example.notesapp.presentation.create_note.NewNoteFragment"
         android:label="NewNoteFragment" />
 </navigation>

@@ -1,8 +1,7 @@
-package com.example.notesapp.ui.event
+package com.example.notesapp.presentation.event
 
 import com.example.notesapp.base.BaseFragment
 import com.example.notesapp.databinding.FragmentEventBinding
-import com.example.notesapp.ui.extensions.showSnackBar
 
 class EventFragment : BaseFragment<FragmentEventBinding, EventViewModel >() {
     override fun getViewModelClass(): Class<EventViewModel> = EventViewModel::class.java

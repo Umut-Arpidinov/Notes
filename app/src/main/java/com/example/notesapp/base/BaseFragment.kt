@@ -43,9 +43,6 @@ abstract class BaseFragment<VB: ViewBinding, ViewModel: BaseViewModel> : Fragmen
 
     private fun init(){
         binding = getViewBinding()
-        viewModel = ViewModelProvider(this)[getViewModelClass()]
-        fun Disposable.addToContainer() = disposableContainer.add(this)
-
     }
 
     override fun onDestroyView() {
