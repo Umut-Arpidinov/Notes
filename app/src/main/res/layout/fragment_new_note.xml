@@ -53,6 +53,7 @@
         android:rotationX="0"
         android:rotationY="0"
         android:text="@string/msg_save"
+        android:visibility="invisible"
         android:textAlignment="center"
         android:textSize="14sp"
         app:backgroundTint="@color/black"

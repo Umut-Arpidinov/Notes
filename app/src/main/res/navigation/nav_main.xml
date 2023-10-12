@@ -9,7 +9,12 @@
         android:id="@+id/notesFragment"
         android:name="com.example.notesapp.presentation.notes.NotesFragment"
         tools:layout="@layout/fragment_notes"
-        android:label="NotesFragment" />
+        android:label="NotesFragment">
+        <argument
+            android:name="id"
+            app:argType="integer"
+            />
+    </fragment>
     <fragment
         android:id="@+id/searchFragment"
         tools:layout="@layout/fragment_search"
@@ -24,5 +29,10 @@
         android:id="@+id/newNoteFragment"
         tools:layout="@layout/fragment_new_note"
         android:name="com.example.notesapp.presentation.create_note.NewNoteFragment"
-        android:label="NewNoteFragment" />
+        android:label="NewNoteFragment" >
+        <action
+            android:id="@+id/action_newNoteFragment_to_notesFragment"
+            app:destination="@id/notesFragment"
+            />
+    </fragment>
 </navigation>

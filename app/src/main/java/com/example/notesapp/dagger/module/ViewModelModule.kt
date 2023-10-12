@@ -3,6 +3,7 @@ package com.example.notesapp.dagger.module
 import androidx.lifecycle.ViewModel
 import com.example.notesapp.dagger.mapkey.ViewModelKey
 import com.example.notesapp.dagger.scope.ApplicationScope
+import com.example.notesapp.presentation.create_note.NewNoteFragmentViewModel
 import com.example.notesapp.presentation.notes.NotesViewModel
 import dagger.Binds
 import dagger.Module
@@ -15,5 +16,10 @@ interface ViewModelModule {
     @ViewModelKey(NotesViewModel::class)
     @Binds
     fun bindNotesViewModel(impl: NotesViewModel): ViewModel
+
+    @IntoMap
+    @ViewModelKey(NewNoteFragmentViewModel::class)
+    @Binds
+    fun bindNewNoteViewModel(impl: NewNoteFragmentViewModel): ViewModel
 
 }

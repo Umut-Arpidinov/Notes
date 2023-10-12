@@ -45,9 +45,12 @@
         android:hint="@string/msg_search"
         android:inputType="text"
         android:paddingHorizontal="22dp"
+        android:textColorHint="#78909C"
         android:textSize="18sp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_title_notes" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_title_notes"
+        tools:ignore="VisualLintTextFieldSize" />
 
     <com.example.notesapp.presentation.views.CustomNotesCategoryView
         android:id="@+id/btn_all_notes"
@@ -59,9 +62,9 @@
         app:category_color="@color/gray_2"
         app:category_icon="@drawable/ic_notes"
         app:category_name="@string/msg_all_notes"
-        app:layout_constraintEnd_toStartOf="@+id/btn_favourites"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btn_favourites"
+        android:layout_marginEnd="10dp"
         app:layout_constraintTop_toBottomOf="@id/edit_text_search" />
 
     <com.example.notesapp.presentation.views.CustomNotesCategoryView
@@ -74,9 +77,7 @@
         app:category_color="@color/yellow"
         app:category_icon="@drawable/ic_favourite"
         app:category_name="@string/msg_favourites"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btn_all_notes"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/edit_text_search" />
 
     <com.example.notesapp.presentation.views.CustomNotesCategoryView
@@ -89,8 +90,8 @@
         app:category_color="@color/blue_3"
         app:category_icon="@drawable/ic_hidden"
         app:category_name="@string/msg_hidden"
-        app:layout_constraintEnd_toStartOf="@+id/btn_trash"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintEnd_toStartOf="@id/btn_trash"
+        android:layout_marginEnd="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_all_notes" />
 
@@ -103,11 +104,11 @@
         app:category_background="@drawable/deleted_background"
         app:category_color="@color/red"
         app:category_icon="@drawable/ic_trash"
+        app:layout_constraintRight_toRightOf="parent"
         app:category_name="@string/msg_trash"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btn_hidden"
-        app:layout_constraintTop_toBottomOf="@id/btn_favourites" />
+        app:layout_constraintTop_toBottomOf="@id/btn_favourites"
+        tools:layout_editor_absoluteX="208dp" />
+
 
     <TextView
         android:id="@+id/tv_title_recent_note"
@@ -126,6 +127,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="8dp"
+        android:visibility="gone"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -136,13 +138,15 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/notes_rv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="22dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rv_recent_note"
-        tools:itemCount="4"
+        tools:itemCount="30"
         tools:listitem="@layout/item_note" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

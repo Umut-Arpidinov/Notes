@@ -24,6 +24,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         initDaggerComponent()
         supportFragmentManager.fragmentFactory = fragmentFactory
+
+        supportFragmentManager.addOnBackStackChangedListener {
+
+        }
         bindingActivity = ActivityMainBinding.inflate(layoutInflater)
         setContentView(bindingActivity.root)
 
@@ -38,6 +42,8 @@ class MainActivity : AppCompatActivity() {
             }else{
                 bindingActivity.bottomNav.visibility = View.VISIBLE
             }
+
+
         }
 
 
