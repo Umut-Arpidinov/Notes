@@ -3,8 +3,8 @@ package com.example.notesapp.data.repository
 
 import android.util.Log
 import androidx.lifecycle.LiveData
-import com.example.notesapp.data.database.NotesRoomDatabase
-import com.example.notesapp.data.database.enitites.Note
+import com.example.notesapp.data.local.database.NotesRoomDatabase
+import com.example.notesapp.data.local.database.enitites.Note
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Single
 import javax.inject.Inject
@@ -16,8 +16,8 @@ class NotesRepositoryImpl @Inject constructor (
         return notesDB.notesDao().getNotes()
     }
 
-    override fun getNoteById(id: Int): Note {
-        TODO("Not yet implemented")
+    override fun getNoteById(uid: Int): Single<Note> {
+        return notesDB.notesDao().getNoteById(uid)
     }
 
     override fun saveNote(note: Note): Single<Unit>{

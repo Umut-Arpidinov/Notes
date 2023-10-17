@@ -6,6 +6,7 @@ import com.example.notesapp.base.InjectFragmentFactory
 import com.example.notesapp.dagger.mapkey.FragmentKey
 import com.example.notesapp.presentation.create_note.NewNoteFragment
 import com.example.notesapp.presentation.notes.NotesFragment
+import com.example.notesapp.presentation.update_note.UpdateNoteFragment
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -25,4 +26,9 @@ interface FragmentModule {
     @IntoMap
     @FragmentKey(NewNoteFragment::class)
     fun bindNewNoteFragment(fragment: NewNoteFragment): Fragment
+
+    @Binds
+    @IntoMap
+    @FragmentKey(UpdateNoteFragment::class)
+    fun bindUpdateNoteFragment(fragment: UpdateNoteFragment): Fragment
 }

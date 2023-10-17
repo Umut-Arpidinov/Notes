@@ -6,15 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.disposables.Disposable
 
-abstract class BaseFragment<VB: ViewBinding, ViewModel: BaseViewModel> : Fragment(){
+abstract class BaseFragment<VB: ViewBinding> : Fragment(){
 
-   protected lateinit var viewModel: ViewModel
-   protected abstract fun getViewModelClass(): Class<ViewModel>
 
     protected lateinit var binding: VB
     protected abstract fun getViewBinding(): VB

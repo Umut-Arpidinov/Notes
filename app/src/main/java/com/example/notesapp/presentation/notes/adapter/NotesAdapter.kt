@@ -4,32 +4,55 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.notesapp.data.database.enitites.Note
+import com.example.notesapp.data.local.database.enitites.Note
 import com.example.notesapp.databinding.ItemNoteBinding
+import java.util.ArrayList
 
 class NotesAdapter : ListAdapter<Note, NotesAdapter.NotesViewHolder>(NotesDiffUtil) {
 
-    inner class NotesViewHolder(private val binding: ItemNoteBinding) :
+    private var  onNoteClickListener: ((note: Note) -> Unit)? = null
+
+
+    fun setOnNoteClickListener(listener: ((note: Note) -> Unit)?){
+        onNoteClickListener = listener
+    }
+
+    inner class NotesViewHolder(val binding: ItemNoteBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-            fun bind(note: Note) = with(binding){
+        fun bind(note: Note) = with(binding) {
+            if(note.title.isNotEmpty()){
                 tvNoteBody.text = note.text
                 tvNoteTitle.text = note.title
             }
+            else{
+                tvNoteBody.text = note.text
+                tvNoteTitle.text = note.text
+            }
+
+        }
+    }
+    fun getNotes(): Int{
+        return itemCount
+    }
+    fun getNoteAt(position: Int): Note {
+        return getItem(position)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotesViewHolder {
-        val binding = ItemNoteBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val binding = ItemNoteBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return NotesViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: NotesViewHolder, position: Int) {
         val currentItem = getItem(position)
-        if(currentItem != null){
+        if (currentItem != null) {
             holder.bind(currentItem)
+            holder.binding.cardViewItem.setOnClickListener {
+                onNoteClickListener?.invoke(currentItem)
+            }
         }
 
     }
-
 
 }

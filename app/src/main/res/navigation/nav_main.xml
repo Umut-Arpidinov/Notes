@@ -10,10 +10,9 @@
         android:name="com.example.notesapp.presentation.notes.NotesFragment"
         tools:layout="@layout/fragment_notes"
         android:label="NotesFragment">
-        <argument
-            android:name="id"
-            app:argType="integer"
-            />
+        <action
+            android:id="@+id/action_notesFragment_to_updateNoteFragment"
+            app:destination="@id/updateNoteFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
@@ -29,10 +28,21 @@
         android:id="@+id/newNoteFragment"
         tools:layout="@layout/fragment_new_note"
         android:name="com.example.notesapp.presentation.create_note.NewNoteFragment"
-        android:label="NewNoteFragment" >
-        <action
-            android:id="@+id/action_newNoteFragment_to_notesFragment"
-            app:destination="@id/notesFragment"
+        android:label="NewNoteFragment">
+    </fragment>
+    <fragment
+        android:id="@+id/updateNoteFragment"
+        tools:layout="@layout/fragment_note_update"
+        android:name="com.example.notesapp.presentation.update_note.UpdateNoteFragment"
+        android:label="UpdateNoteFragment">
+        <argument
+            android:name="actionType"
+            app:argType="com.example.notesapp.data.local.database.enitites.Crud"
+            />
+        <argument
+            android:name="uid"
+            app:argType="integer"
+            app:nullable="false"
             />
     </fragment>
 </navigation>

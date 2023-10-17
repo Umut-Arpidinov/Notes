@@ -1,9 +1,9 @@
-package com.example.notesapp.data.database.dao
+package com.example.notesapp.data.local.database.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import com.example.notesapp.data.database.enitites.Note
+import com.example.notesapp.data.local.database.enitites.Note
 import io.reactivex.rxjava3.core.Single
 
 @Dao
@@ -14,8 +14,10 @@ interface NotesDAO {
     @Insert
     fun addNote(note: Note): Single<Unit>
 
-    @Query("DELETE FROM notes where uid = :id")
+    @Query("SELECT * FROM notes WHERE uid =:uid ")
+    fun getNoteById(uid: Int): Single<Note>
 
+    @Query("DELETE FROM notes where uid = :id")
     fun removeNote(id: Int): Single<Unit>
 
 }
