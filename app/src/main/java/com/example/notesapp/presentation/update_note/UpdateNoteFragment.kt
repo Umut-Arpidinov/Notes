@@ -83,13 +83,13 @@ class UpdateNoteFragment @Inject constructor(
         var titleChanged = false
         val initialText = note.text
         val initialTitle = note.title
-        editTextNoteContent.doOnTextChanged { text, _, _, _ ->
-            textChanged = initialText != text.toString().trim().trimStart()
-            btnSave.isVisible = titleChanged || textChanged
+        editTextNoteContent.doOnTextChanged { text, _, _, count ->
+            textChanged = initialText != text.toString().trim().trimStart() && !text.isNullOrEmpty()
+            btnSave.isVisible = (titleChanged || textChanged)
         }
-        editTextPageTitle.doOnTextChanged { text, _, _, _ ->
-            titleChanged = initialTitle != text.toString().trim().trimStart()
-            btnSave.isVisible = titleChanged || textChanged
+        editTextPageTitle.doOnTextChanged { text, _, _, count ->
+            titleChanged = initialTitle != text.toString().trim().trimStart() && !text.isNullOrEmpty()
+            btnSave.isVisible = (titleChanged || textChanged)
         }
     }
 

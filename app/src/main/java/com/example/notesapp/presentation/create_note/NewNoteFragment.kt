@@ -1,5 +1,7 @@
 package com.example.notesapp.presentation.create_note
 
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import androidx.activity.addCallback
 import androidx.core.view.isVisible
@@ -24,8 +26,7 @@ class NewNoteFragment @Inject constructor(
         ViewModelProvider(this, viewModelFactory)[NewNoteFragmentViewModel::class.java]
     }
 
-    override fun getViewBinding(): FragmentNewNoteBinding =
-        FragmentNewNoteBinding.inflate(layoutInflater)
+    override fun getViewBinding(): FragmentNewNoteBinding = FragmentNewNoteBinding.inflate(layoutInflater)
 
 
     override fun setUpListener() = with(binding) {
@@ -41,7 +42,8 @@ class NewNoteFragment @Inject constructor(
         }
 
     }
-    override fun observeData() = with(binding){
+
+    override fun observeData() = with(binding) {
         super.observeData()
 
     }
@@ -51,8 +53,8 @@ class NewNoteFragment @Inject constructor(
         setButtonVisibility()
     }
 
-    private fun saveNote(note: Note){
-         newNoteViewModel.saveNote(note)
+    private fun saveNote(note: Note) {
+        newNoteViewModel.saveNote(note)
     }
 
 
@@ -71,8 +73,16 @@ class NewNoteFragment @Inject constructor(
     }
 
     private fun setButtonVisibility() = with(binding) {
+        var isTextEmpty = false
+        var isTitleEmpty = false
         editTextNoteContent.doOnTextChanged { text, _, _, _ ->
-            btnSave.isVisible = !text.isNullOrEmpty()
+            isTextEmpty = !text.isNullOrEmpty()
+            btnSave.isVisible = isTextEmpty || isTitleEmpty
+        }
+        editTextPageTitle.doOnTextChanged { text, _, _, _ ->
+            isTitleEmpty = !text.isNullOrEmpty()
+            btnSave.isVisible = isTextEmpty || isTitleEmpty
         }
     }
+
 }
