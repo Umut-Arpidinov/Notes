@@ -21,15 +21,8 @@ class NotesAdapter : ListAdapter<Note, NotesAdapter.NotesViewHolder>(NotesDiffUt
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(note: Note) = with(binding) {
-            if(note.title.isNotEmpty()){
-                tvNoteBody.text = note.text
-                tvNoteTitle.text = note.title
-            }
-            else{
-                tvNoteBody.text = note.text
-                tvNoteTitle.text = note.text
-            }
-
+            tvNoteTitle.text = if(!note.title.isNullOrEmpty()) note.title else note.text
+            tvNoteBody.text = note.text
         }
     }
     fun getNotes(): Int{
