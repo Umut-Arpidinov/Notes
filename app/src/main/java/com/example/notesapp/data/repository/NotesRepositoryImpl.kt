@@ -28,8 +28,8 @@ class NotesRepositoryImpl @Inject constructor (
         return notesDB.notesDao().removeNote(id)
     }
 
-    override fun editNote(id: Int) {
-        TODO("Not yet implemented")
+    override fun editNote(note: Note): Single<Unit> {
+        return notesDB.notesDao().updateNote(note)
     }
 
 }

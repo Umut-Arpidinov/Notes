@@ -16,5 +16,5 @@ interface NotesRepository {
 
     fun deleteNote(id: Int): Single<Unit>
 
-    fun editNote(id: Int)
+    fun editNote(note: Note): Single<Unit>
 }

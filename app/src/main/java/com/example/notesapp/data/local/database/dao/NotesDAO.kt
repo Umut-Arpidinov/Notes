@@ -3,6 +3,7 @@ package com.example.notesapp.data.local.database.dao
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Update
 import com.example.notesapp.data.local.database.enitites.Note
 import io.reactivex.rxjava3.core.Single
 
@@ -19,5 +20,8 @@ interface NotesDAO {
 
     @Query("DELETE FROM notes where uid = :id")
     fun removeNote(id: Int): Single<Unit>
+
+    @Update
+    fun updateNote(note: Note): Single<Unit>
 
 }

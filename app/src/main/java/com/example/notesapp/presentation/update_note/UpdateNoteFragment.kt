@@ -1,6 +1,5 @@
 package com.example.notesapp.presentation.update_note
 
-import android.view.View
 import androidx.activity.addCallback
 import androidx.core.view.isVisible
 import androidx.core.widget.doOnTextChanged
@@ -12,13 +11,11 @@ import com.example.notesapp.base.ViewModelFactory
 import com.example.notesapp.data.local.database.enitites.Note
 import com.example.notesapp.databinding.FragmentNoteUpdateBinding
 import com.example.notesapp.presentation.extensions.showSnackBar
-import com.example.notesapp.presentation.notes.NotesViewModel
 import javax.inject.Inject
 
 class UpdateNoteFragment @Inject constructor(
     viewModelFactory: ViewModelFactory
 ) : BaseFragment<FragmentNoteUpdateBinding>() {
-
 
     override fun getViewBinding(): FragmentNoteUpdateBinding =
         FragmentNoteUpdateBinding.inflate(layoutInflater)
@@ -36,9 +33,10 @@ class UpdateNoteFragment @Inject constructor(
         linearBack.setOnClickListener { navigateToHome() }
         onBackPressed()
         btnSave.setOnClickListener {
-            val title = editTextPageTitle.text.toString()
-            val text = editTextNoteContent.text.toString()
-            val note = Note(title = title, text = text)
+            val title = editTextPageTitle.text.toString().trimStart().trim()
+            val text = editTextNoteContent.text.toString().trimStart().trim()
+            val note = Note(title = title, text = text, uid = args.uid)
+            updateNoteViewModel.updateNote(note)
             navigateToHome()
         }
 
@@ -52,14 +50,14 @@ class UpdateNoteFragment @Inject constructor(
 
     override fun observeData() {
         super.observeData()
-        updateNoteViewModel.note.observe(viewLifecycleOwner){
+        updateNoteViewModel.note.observe(viewLifecycleOwner) {
             onNoteReceived(it)
             setButtonVisibility(it)
         }
     }
 
 
-    private fun onNoteReceived(note: Note) = with(binding){
+    private fun onNoteReceived(note: Note) = with(binding) {
         val text = note.text
         val title = note.title
         editTextNoteContent.setText(text)
@@ -81,19 +79,19 @@ class UpdateNoteFragment @Inject constructor(
     }
 
     private fun setButtonVisibility(note: Note) = with(binding) {
+        var textChanged = false
+        var titleChanged = false
         val initialText = note.text
         val initialTitle = note.title
-        editTextNoteContent.doOnTextChanged { text, start, before, count ->
-            btnSave.isVisible = initialText != text.toString()
+        editTextNoteContent.doOnTextChanged { text, _, _, _ ->
+            textChanged = initialText != text.toString().trim().trimStart()
+            btnSave.isVisible = titleChanged || textChanged
         }
-        editTextPageTitle.doOnTextChanged { text, start, before, count ->
-            btnSave.isVisible = initialTitle != text.toString()
+        editTextPageTitle.doOnTextChanged { text, _, _, _ ->
+            titleChanged = initialTitle != text.toString().trim().trimStart()
+            btnSave.isVisible = titleChanged || textChanged
         }
     }
-
-
-
-
 
 
 }

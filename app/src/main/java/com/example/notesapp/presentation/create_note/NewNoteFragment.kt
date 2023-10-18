@@ -20,8 +20,6 @@ class NewNoteFragment @Inject constructor(
     viewModelFactory: ViewModelFactory,
 ) : BaseFragment<FragmentNewNoteBinding>() {
 
-    private val args: UpdateNoteFragmentArgs by navArgs()
-
     private val newNoteViewModel by lazy {
         ViewModelProvider(this, viewModelFactory)[NewNoteFragmentViewModel::class.java]
     }
@@ -35,8 +33,8 @@ class NewNoteFragment @Inject constructor(
         linearBack.setOnClickListener { navigateToHome() }
         onBackPressed()
         btnSave.setOnClickListener {
-            val title = editTextPageTitle.text.toString()
-            val text = editTextNoteContent.text.toString()
+            val title = editTextPageTitle.text.toString().trim().trimStart()
+            val text = editTextNoteContent.text.toString().trim().trimStart()
             val note = Note(title = title, text = text)
             saveNote(note)
             navigateToHome()
@@ -45,20 +43,16 @@ class NewNoteFragment @Inject constructor(
     }
     override fun observeData() = with(binding){
         super.observeData()
-        newNoteViewModel.note.observe(viewLifecycleOwner){
 
-        }
     }
 
     override fun setUpViews() {
         super.setUpViews()
         setButtonVisibility()
-
-
     }
 
-    private fun saveNote(note: Note) {
-        newNoteViewModel.saveNote(note)
+    private fun saveNote(note: Note){
+         newNoteViewModel.saveNote(note)
     }
 
 

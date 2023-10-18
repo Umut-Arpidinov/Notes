@@ -30,7 +30,6 @@
             style="@style/BlueTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:layout_marginStart="10dp"
             android:text="@string/msg_back"
             app:layout_constraintLeft_toRightOf="@id/ic_btn_back"
@@ -39,58 +38,75 @@
     </LinearLayout>
 
 
-    <Button
+    <ImageView
         android:id="@+id/btn_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="11dp"
         android:layout_marginEnd="22dp"
-        android:background="@drawable/button_black_background"
-        android:clickable="true"
-        android:focusable="true"
+        android:src="@drawable/ic_done"
+        android:visibility="invisible"
         android:fontFamily="@font/nunito_sans_regular"
         android:gravity="center_vertical|center_horizontal"
-        android:rotationX="0"
-        android:rotationY="0"
         android:text="@string/msg_save"
-        android:visibility="invisible"
         android:textAlignment="center"
         android:textSize="14sp"
-        app:backgroundTint="@color/black"
+        app:layout_constraintBottom_toBottomOf="@id/linear_back"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/linear_back" />
 
-    <EditText
-        android:id="@+id/edit_text_page_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="30dp"
-        android:background="@null"
-        android:fontFamily="@font/nunito_sans_bold"
-        android:hint="@string/msg_page_title"
-        android:inputType="textMultiLine"
-        android:textSize="26sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/linear_back" />
-
-
-    <EditText
-        android:id="@+id/edit_text_note_content"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:background="@null"
-        android:fontFamily="@font/nunito_sans_regular"
-        android:hint="@string/msg_type"
-        android:inputType="textMultiLine"
-        android:overScrollMode="always"
-        android:paddingHorizontal="22dp"
-        android:scrollbarStyle="insideInset"
-        android:scrollbars="vertical"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edit_text_page_title" />
+        android:scrollbars="none"
+        app:layout_constraintTop_toBottomOf="@id/linear_back"
+        android:paddingHorizontal="22dp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="30dp"
+            >
+
+            <EditText
+                android:id="@+id/edit_text_page_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:fontFamily="@font/nunito_sans_bold"
+                android:hint="@string/msg_page_title"
+                android:inputType="textMultiLine"
+                android:textSize="26sp"
+                app:layout_constraintLeft_toLeftOf="parent" />
+
+            <View
+                android:layout_width="match_parent"
+                android:background="@color/black"
+                android:layout_marginTop="5dp"
+                android:layout_height="0.7dp"/>
+
+            <EditText
+                android:id="@+id/edit_text_note_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@null"
+                android:fontFamily="@font/nunito_sans_regular"
+                android:hint="@string/msg_type"
+                android:inputType="textMultiLine"
+                android:overScrollMode="always"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

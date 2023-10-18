@@ -29,4 +29,13 @@ class UpdateNoteFragmentViewModel @Inject constructor(
         )
     }
 
+    fun updateNote(note: Note){
+        compositeDisposable.add(repository.editNote(note)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe()
+        )
+
+    }
+
 }

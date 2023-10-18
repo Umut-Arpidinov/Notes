@@ -38,8 +38,9 @@ class NotesFragment @Inject constructor(
 
     override fun setUpListener() = with(binding) {
         super.setUpListener()
-        notesAdapter.setOnNoteClickListener { note ->
-            val action = NotesFragmentDirections.actionNotesFragmentToUpdateNoteFragment(Crud.UPDATE,note.uid)
+        notesAdapter.setOnNoteClickListener { note, position ->
+            val action = NotesFragmentDirections.actionNotesFragmentToUpdateNoteFragment(note.uid)
+            notesAdapter.notifyItemChanged(position)
             findNavController().navigate(action)
 
         }

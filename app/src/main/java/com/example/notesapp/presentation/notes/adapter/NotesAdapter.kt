@@ -10,10 +10,10 @@ import java.util.ArrayList
 
 class NotesAdapter : ListAdapter<Note, NotesAdapter.NotesViewHolder>(NotesDiffUtil) {
 
-    private var  onNoteClickListener: ((note: Note) -> Unit)? = null
+    private var  onNoteClickListener: ((note: Note, position: Int) -> Unit)? = null
 
 
-    fun setOnNoteClickListener(listener: ((note: Note) -> Unit)?){
+    fun setOnNoteClickListener(listener: ((note: Note, position: Int) -> Unit)?){
         onNoteClickListener = listener
     }
 
@@ -42,7 +42,7 @@ class NotesAdapter : ListAdapter<Note, NotesAdapter.NotesViewHolder>(NotesDiffUt
         if (currentItem != null) {
             holder.bind(currentItem)
             holder.binding.cardViewItem.setOnClickListener {
-                onNoteClickListener?.invoke(currentItem)
+                onNoteClickListener?.invoke(currentItem, position)
             }
         }
 

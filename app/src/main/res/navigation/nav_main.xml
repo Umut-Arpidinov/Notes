@@ -12,7 +12,12 @@
         android:label="NotesFragment">
         <action
             android:id="@+id/action_notesFragment_to_updateNoteFragment"
-            app:destination="@id/updateNoteFragment" />
+            app:destination="@id/updateNoteFragment"
+            app:exitAnim="@anim/to_left"
+            app:enterAnim="@anim/from_right"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right"
+            />
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
@@ -35,10 +40,6 @@
         tools:layout="@layout/fragment_note_update"
         android:name="com.example.notesapp.presentation.update_note.UpdateNoteFragment"
         android:label="UpdateNoteFragment">
-        <argument
-            android:name="actionType"
-            app:argType="com.example.notesapp.data.local.database.enitites.Crud"
-            />
         <argument
             android:name="uid"
             app:argType="integer"

@@ -26,9 +26,17 @@ class NewNoteFragmentViewModel @Inject constructor(
         compositeDisposable.add(repository.saveNote(note)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe()
+            .subscribe({
+
+            },{
+
+
+            })
         )
+
     }
+
+
 
     fun getNoteById(uid: Int){
         compositeDisposable.add(repository.getNoteById(uid)

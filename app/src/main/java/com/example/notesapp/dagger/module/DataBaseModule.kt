@@ -22,13 +22,21 @@ class DataBaseModule {
             database.execSQL("ALTER TABLE `Note_new` RENAME TO `notes`;")
         }
     }
+    private val MIGRATION_2_3 = object : Migration(2,3){
+        override fun migrate(database: SupportSQLiteDatabase) {
+            database.execSQL("CREATE TABLE IF NOT EXISTS `Note_newest` (`uid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `title` TEXT NOT NULL, `text` TEXT NOT NULL, `type` TEXT DEFAULT 'DEFAULT');")
+            database.execSQL("INSERT INTO `Note_newest` (`uid`, `title`, `text`, `type`) SELECT `uid`, `title`, `text`, `type` FROM `notes`;")
+            database.execSQL("DROP TABLE `notes`;")
+            database.execSQL("ALTER TABLE `Note_newest` RENAME TO `notes`;")
+        }
+    }
+
 
 
     @ApplicationScope
     @Provides
     fun provideNotesDb(context: Context): NotesRoomDatabase {
         return Room.databaseBuilder(context, NotesRoomDatabase::class.java,"NotesDB")
-            .addMigrations(MIGRATION_1_2)
             .build()
     }
 }
