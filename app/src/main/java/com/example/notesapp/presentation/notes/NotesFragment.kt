@@ -1,15 +1,21 @@
 package com.example.notesapp.presentation.notes
 
+import android.os.Build
+import android.view.View
+import android.widget.PopupMenu
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.example.notesapp.R
 import com.example.notesapp.base.BaseFragment
 import com.example.notesapp.base.ViewModelFactory
 import com.example.notesapp.data.local.database.enitites.Crud
 import com.example.notesapp.data.local.database.enitites.Note
 import com.example.notesapp.databinding.FragmentNotesBinding
 import com.example.notesapp.presentation.notes.adapter.NotesAdapter
+import de.hdodenhof.circleimageview.BuildConfig
 import javax.inject.Inject
 
 class NotesFragment @Inject constructor(
@@ -44,6 +50,10 @@ class NotesFragment @Inject constructor(
             findNavController().navigate(action)
 
         }
+
+        notesAdapter.setOnNoteActionClickListener { note, position, view ->
+            showActionList(view)
+        }
         setOnSwipeListener(notesRv)
     }
 
@@ -77,6 +87,15 @@ class NotesFragment @Inject constructor(
         notesViewModel.notes.observe(viewLifecycleOwner) {
             onNotesListReceived(it)
         }
+    }
+
+    private fun showActionList(v: View){
+        val popUp = PopupMenu(requireContext(), v)
+        popUp.inflate(R.menu.action_menu)
+        if(BuildConfig.VERSION_CODE == Build.VERSION_CODES.Q){
+            popUp.setForceShowIcon(true)
+        }
+        popUp.show()
     }
 
     private fun onNotesListReceived(list: List<Note>) {

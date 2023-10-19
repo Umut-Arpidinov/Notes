@@ -27,6 +27,9 @@
     <string name="msg_getting_started">Getting Started</string>
     <string name="msg_type">Type anything </string>
     <string name="msg_page_title">Page Title</string>
+    <string name="msg_add_to_favorites">Add to Favorites</string>
+    <string name="msg_remove_note">Remove Note</string>
+    <string name="msg_hide_note">Hide Note</string>
     <string name="msg_search_not_found">No recent searches to display</string>
     <string name="msg_ux_ui_design">UX Deign</string>
     <string name="msg_lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam cum ligula justo.</string>

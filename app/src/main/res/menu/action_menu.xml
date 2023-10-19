@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item
+        android:id="@+id/make_favourite"
+        android:title="@string/msg_add_to_favorites"
+        android:icon="@drawable/ic_favourite"
+        android:iconTint="@color/yellow"
+        />
+    <item
+        android:id="@+id/delete_note"
+        android:title="@string/msg_add_to_favorites"
+        android:icon="@drawable/ic_trash"
+        android:iconTint="@color/red"
+        />
+    <item
+        android:id="@+id/hide_note"
+        android:title="@string/msg_hide_note"
+        android:icon="@drawable/ic_hidden"
+        android:iconTint="@color/blue"
+        />
+</menu>

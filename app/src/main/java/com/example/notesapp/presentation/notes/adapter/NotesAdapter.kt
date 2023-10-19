@@ -1,6 +1,7 @@
 package com.example.notesapp.presentation.notes.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -10,10 +11,17 @@ import java.util.ArrayList
 
 class NotesAdapter : ListAdapter<Note, NotesAdapter.NotesViewHolder>(NotesDiffUtil) {
 
-    private var  onNoteClickListener: ((note: Note, position: Int) -> Unit)? = null
+    private var onNoteClickListener: ((note: Note, position: Int) -> Unit)? = null
+
+    private var onNoteActionClickListener: ((note: Note, position: Int,view: View) -> Unit)? = null
 
 
-    fun setOnNoteClickListener(listener: ((note: Note, position: Int) -> Unit)?){
+    fun setOnNoteActionClickListener(listener: ((note: Note, position: Int, view: View) -> Unit)?) {
+        onNoteActionClickListener = listener
+    }
+
+
+    fun setOnNoteClickListener(listener: ((note: Note, position: Int) -> Unit)?) {
         onNoteClickListener = listener
     }
 
@@ -21,13 +29,16 @@ class NotesAdapter : ListAdapter<Note, NotesAdapter.NotesViewHolder>(NotesDiffUt
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(note: Note) = with(binding) {
-            tvNoteTitle.text = if(!note.title.isNullOrEmpty()) note.title else note.text
+            tvNoteTitle.text = if (!note.title.isNullOrEmpty()) note.title else note.text
             tvNoteBody.text = note.text
         }
     }
-    fun getNotes(): Int{
+
+    fun getNotes(): Int {
         return itemCount
+
     }
+
     fun getNoteAt(position: Int): Note {
         return getItem(position)
     }
@@ -41,8 +52,11 @@ class NotesAdapter : ListAdapter<Note, NotesAdapter.NotesViewHolder>(NotesDiffUt
         val currentItem = getItem(position)
         if (currentItem != null) {
             holder.bind(currentItem)
-            holder.binding.cardViewItem.setOnClickListener {
+            holder.binding.lienarChild.setOnClickListener {
                 onNoteClickListener?.invoke(currentItem, position)
+            }
+            holder.binding.actionList.setOnClickListener {
+                onNoteActionClickListener?.invoke(currentItem, position,it)
             }
         }
 

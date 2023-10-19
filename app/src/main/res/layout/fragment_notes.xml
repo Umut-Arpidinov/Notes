@@ -146,6 +146,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rv_recent_note"
+        app:stackFromEnd="true"
+        app:reverseLayout="true"
         tools:itemCount="30"
         tools:listitem="@layout/item_note" />
 
