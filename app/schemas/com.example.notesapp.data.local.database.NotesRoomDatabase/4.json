@@ -1,12 +1,12 @@
 {
   "formatVersion": 1,
   "database": {
-    "version": 3,
-    "identityHash": "8a31550bb682fa89a3e9785e7c2bd5ba",
+    "version": 4,
+    "identityHash": "f40bf6f6316f88551637b53f461f786a",
     "entities": [
       {
         "tableName": "notes",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`uid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `title` TEXT NOT NULL, `text` TEXT NOT NULL, `type` TEXT, `lastSavedUpdatedTime` TEXT NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`uid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `title` TEXT NOT NULL, `text` TEXT NOT NULL, `type` TEXT, `lastSavedUpdatedTime` TEXT)",
         "fields": [
           {
             "fieldPath": "uid",
@@ -36,7 +36,7 @@
             "fieldPath": "lastSavedUpdatedTime",
             "columnName": "lastSavedUpdatedTime",
             "affinity": "TEXT",
-            "notNull": true
+            "notNull": false
           }
         ],
         "primaryKey": {
@@ -52,7 +52,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '8a31550bb682fa89a3e9785e7c2bd5ba')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'f40bf6f6316f88551637b53f461f786a')"
     ]
   }
 }

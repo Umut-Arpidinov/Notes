@@ -14,7 +14,6 @@ import io.reactivex.rxjava3.disposables.Disposable
 
 abstract class BaseFragment<VB: ViewBinding> : Fragment(){
 
-
     protected lateinit var binding: VB
     protected abstract fun getViewBinding(): VB
 

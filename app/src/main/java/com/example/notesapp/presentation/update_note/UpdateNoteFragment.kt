@@ -35,7 +35,8 @@ class UpdateNoteFragment @Inject constructor(
         btnSave.setOnClickListener {
             val title = editTextPageTitle.text.toString().trimStart().trim()
             val text = editTextNoteContent.text.toString().trimStart().trim()
-            val note = Note(title = title, text = text, uid = args.uid)
+            val lastModifiedTime = updateNoteViewModel.getTime(DATE)
+            val note = Note(title = title, text = text, uid = args.uid, lastSavedUpdatedTime = lastModifiedTime )
             updateNoteViewModel.updateNote(note)
             navigateToHome()
         }
@@ -92,6 +93,12 @@ class UpdateNoteFragment @Inject constructor(
             btnSave.isVisible = (titleChanged || textChanged)
         }
     }
+
+    companion object {
+        private const val DATE_WITH_YEAR = "dd MMMM yyyy"
+        private const val DATE  = "dd MMMM HH:mm"
+    }
+
 
 
 }

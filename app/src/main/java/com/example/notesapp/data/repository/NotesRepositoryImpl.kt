@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import com.example.notesapp.data.local.database.NotesRoomDatabase
 import com.example.notesapp.data.local.database.enitites.Note
+import com.example.notesapp.data.local.database.enitites.NoteType
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Single
 import javax.inject.Inject
@@ -14,6 +15,10 @@ class NotesRepositoryImpl @Inject constructor (
 ) : NotesRepository {
     override fun getAllNotes(): Single<List<Note>> {
         return notesDB.notesDao().getNotes()
+    }
+
+    override fun getNotesByType(type: NoteType): Single<List<Note>> {
+        return notesDB.notesDao().getNotesByType(type)
     }
 
     override fun getNoteById(uid: Int): Single<Note> {
@@ -30,6 +35,10 @@ class NotesRepositoryImpl @Inject constructor (
 
     override fun editNote(note: Note): Single<Unit> {
         return notesDB.notesDao().updateNote(note)
+    }
+
+    override fun updateNoteType(uid: Int, type: NoteType): Single<Unit> {
+        return notesDB.notesDao().updateNoteType(uid, type)
     }
 
 }

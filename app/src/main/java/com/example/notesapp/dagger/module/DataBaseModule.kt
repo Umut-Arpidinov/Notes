@@ -30,6 +30,14 @@ class DataBaseModule {
             database.execSQL("ALTER TABLE `Note_newest` RENAME TO `notes`;")
         }
     }
+    private val MIGRATION_3_4 = object : Migration(3, 4) {
+        override fun migrate(database: SupportSQLiteDatabase) {
+            database.execSQL("CREATE TABLE IF NOT EXISTS `note_last` (`uid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `title` TEXT NOT NULL, `text` TEXT NOT NULL, `type` TEXT DEFAULT 'DEFAULT', `lastSavedUpdatedTime` TEXT);")
+            database.execSQL("INSERT INTO `note_last` (`uid`, `title`, `text`, `type` ) SELECT `uid`, `title`, `text`, `type`  FROM `notes`;")
+            database.execSQL("DROP TABLE `notes`;")
+            database.execSQL("ALTER TABLE `note_last` RENAME TO `notes`;")
+        }
+    }
 
 
 
@@ -37,6 +45,7 @@ class DataBaseModule {
     @Provides
     fun provideNotesDb(context: Context): NotesRoomDatabase {
         return Room.databaseBuilder(context, NotesRoomDatabase::class.java,"NotesDB")
+            .addMigrations(MIGRATION_3_4)
             .build()
     }
 }

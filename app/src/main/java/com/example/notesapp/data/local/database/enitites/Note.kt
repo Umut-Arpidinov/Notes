@@ -9,5 +9,6 @@ data class Note(
     @PrimaryKey(autoGenerate = true) val uid: Int=0,
     @ColumnInfo(name = "title") var title: String,
     @ColumnInfo(name = "text") var text: String,
-    @ColumnInfo(name = "type") var type: NoteType? = NoteType.DEFAULT
+    @ColumnInfo(name = "type") var type: NoteType? = NoteType.DEFAULT,
+    @ColumnInfo(name = "lastSavedUpdatedTime") var lastSavedUpdatedTime: String?
 )

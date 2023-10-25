@@ -9,7 +9,7 @@ import com.example.notesapp.data.local.database.dao.NotesDAO
 import com.example.notesapp.data.local.database.enitites.Note
 
 
-@Database(entities = [Note::class], version = 3)
+@Database(entities = [Note::class], version = 4)
 abstract class NotesRoomDatabase  : RoomDatabase(){
 
     abstract fun notesDao(): NotesDAO

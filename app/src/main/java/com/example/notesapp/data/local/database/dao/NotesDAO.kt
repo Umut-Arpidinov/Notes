@@ -5,6 +5,7 @@ import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
 import com.example.notesapp.data.local.database.enitites.Note
+import com.example.notesapp.data.local.database.enitites.NoteType
 import io.reactivex.rxjava3.core.Single
 
 @Dao
@@ -12,6 +13,8 @@ interface NotesDAO {
     @Query("SELECT * FROM notes")
     fun getNotes(): Single<List<Note>>
 
+    @Query("SELECT * FROM notes WHERE type =:type")
+    fun getNotesByType(type: NoteType): Single<List<Note>>
     @Insert
     fun addNote(note: Note): Single<Unit>
 
@@ -23,5 +26,8 @@ interface NotesDAO {
 
     @Update
     fun updateNote(note: Note): Single<Unit>
+
+    @Query("UPDATE notes SET type =:type WHERE uid =:uid")
+    fun updateNoteType(uid: Int, type: NoteType): Single<Unit>
 
 }

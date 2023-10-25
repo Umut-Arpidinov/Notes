@@ -1,11 +1,13 @@
 package com.example.notesapp.presentation.notes.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.notesapp.data.local.database.enitites.Note
+import com.example.notesapp.data.local.database.enitites.NoteType
 import com.example.notesapp.databinding.ItemNoteBinding
 import java.util.ArrayList
 
@@ -13,10 +15,10 @@ class NotesAdapter : ListAdapter<Note, NotesAdapter.NotesViewHolder>(NotesDiffUt
 
     private var onNoteClickListener: ((note: Note, position: Int) -> Unit)? = null
 
-    private var onNoteActionClickListener: ((note: Note, position: Int,view: View) -> Unit)? = null
+    private var onNoteActionClickListener: ((uid: Int, position: Int,type: NoteType?,view: View) -> Unit)? = null
 
 
-    fun setOnNoteActionClickListener(listener: ((note: Note, position: Int, view: View) -> Unit)?) {
+    fun setOnNoteActionClickListener(listener: ((uid: Int, position: Int,type: NoteType?, view: View) -> Unit)?) {
         onNoteActionClickListener = listener
     }
 
@@ -31,13 +33,10 @@ class NotesAdapter : ListAdapter<Note, NotesAdapter.NotesViewHolder>(NotesDiffUt
         fun bind(note: Note) = with(binding) {
             tvNoteTitle.text = if (!note.title.isNullOrEmpty()) note.title else note.text
             tvNoteBody.text = note.text
+            tvNoteSavedDate.text = note.lastSavedUpdatedTime
         }
     }
 
-    fun getNotes(): Int {
-        return itemCount
-
-    }
 
     fun getNoteAt(position: Int): Note {
         return getItem(position)
@@ -50,13 +49,13 @@ class NotesAdapter : ListAdapter<Note, NotesAdapter.NotesViewHolder>(NotesDiffUt
 
     override fun onBindViewHolder(holder: NotesViewHolder, position: Int) {
         val currentItem = getItem(position)
-        if (currentItem != null) {
+        if (currentItem != null ) {
             holder.bind(currentItem)
             holder.binding.lienarChild.setOnClickListener {
                 onNoteClickListener?.invoke(currentItem, position)
             }
             holder.binding.actionList.setOnClickListener {
-                onNoteActionClickListener?.invoke(currentItem, position,it)
+                onNoteActionClickListener?.invoke(currentItem.uid, position,currentItem.type,it)
             }
         }
 
