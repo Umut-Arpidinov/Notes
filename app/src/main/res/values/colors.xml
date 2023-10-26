@@ -12,6 +12,7 @@
     <color name="gray">#3C3C43</color>
     <color name="gray_2">#8E8E92</color>
     <color name="yellow">#F7CE45</color>
+    <color name="blue_background">#8bb5f7</color>
     <color name="red">#EB4D3D</color>
 
 </resources>

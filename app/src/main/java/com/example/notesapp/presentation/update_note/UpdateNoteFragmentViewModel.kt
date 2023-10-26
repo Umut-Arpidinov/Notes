@@ -16,6 +16,15 @@ class UpdateNoteFragmentViewModel @Inject constructor(
 
     private val _note: MutableLiveData<Note> = MutableLiveData()
     val note: LiveData<Note> get() = _note
+    val symbols = MutableLiveData<Int>()
+
+    init {
+        symbols.value = 0
+    }
+
+    fun incrementAmountOfSymbols(amount: Int) {
+        symbols.value = amount
+    }
 
 
     fun getNoteById(uid: Int){

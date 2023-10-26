@@ -33,8 +33,8 @@ class NewNoteFragment @Inject constructor(
         linearBack.setOnClickListener { navigateToHome() }
         onBackPressed()
         btnSave.setOnClickListener {
-            val title = editTextPageTitle.text.toString().trim().trimStart()
-            val text = editTextNoteContent.text.toString().trim().trimStart()
+            val title = editTextPageTitle.text.toString().trim()
+            val text = editTextNoteContent.text.toString().trim()
             val lastModifiedTime = newNoteViewModel.getTime(DATE)
             val note = Note(title = title, text = text, lastSavedUpdatedTime = lastModifiedTime)
             saveNote(note)
@@ -102,14 +102,14 @@ class NewNoteFragment @Inject constructor(
 
     private var editTextWatcher = object : TextWatcher {
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            val noteBodyLength = binding.editTextNoteContent.text.length
-            val noteTitleLength = binding.editTextPageTitle.text.length
+            val noteBodyLength = binding.editTextNoteContent.text.trim().length
+            val noteTitleLength = binding.editTextPageTitle.text.trim().length
             newNoteViewModel.incrementAmountOfSymbols(noteBodyLength + noteTitleLength)
         }
 
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-            val noteBodyLength = binding.editTextNoteContent.text.length
-            val noteTitleLength = binding.editTextPageTitle.text.length
+            val noteBodyLength = binding.editTextNoteContent.text.trim().length
+            val noteTitleLength = binding.editTextPageTitle.text.trim().length
             newNoteViewModel.incrementAmountOfSymbols(noteBodyLength + noteTitleLength)
         }
 

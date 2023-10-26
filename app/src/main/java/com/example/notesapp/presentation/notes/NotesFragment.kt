@@ -22,7 +22,7 @@ class NotesFragment @Inject constructor(
     viewModelFactory: ViewModelFactory,
 ) : BaseFragment<FragmentNotesBinding>() {
 
-    private val notesAdapter = NotesAdapter()
+    private lateinit var notesAdapter: NotesAdapter
     private lateinit var notesCategoryAdapter: NotesCategoryAdapter
 
     override fun getViewBinding(): FragmentNotesBinding =
@@ -34,6 +34,7 @@ class NotesFragment @Inject constructor(
 
     override fun setUpViews() {
         super.setUpViews()
+        notesAdapter = NotesAdapter(requireContext())
         binding.notesRv.apply {
             adapter = notesAdapter
         }
@@ -63,7 +64,8 @@ class NotesFragment @Inject constructor(
                 type = type
             )
         }
-        notesCategoryAdapter.setOnCategoryClickListener { position, type ->
+        notesCategoryAdapter.setOnCategoryClickListener { _, type ->
+            binding.tvTitleRecentNote.text = type.name.lowercase()
             notesViewModel.getNotes(type)
         }
 
@@ -180,7 +182,6 @@ class NotesFragment @Inject constructor(
     }
 
     companion object {
-        private const val DATE_WITH_YEAR = "dd MMMM yyyy"
         private const val DATE  = "dd MMMM HH:mm"
     }
 }

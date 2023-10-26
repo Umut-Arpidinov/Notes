@@ -1,5 +1,7 @@
 package com.example.notesapp.presentation.update_note
 
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.activity.addCallback
 import androidx.core.view.isVisible
 import androidx.core.widget.doOnTextChanged
@@ -47,6 +49,8 @@ class UpdateNoteFragment @Inject constructor(
     override fun setUpViews() {
         super.setUpViews()
         updateNoteViewModel.getNoteById(args.uid)
+        binding.editTextNoteContent.addTextChangedListener(editTextWatcher)
+        binding.editTextPageTitle.addTextChangedListener(editTextWatcher)
     }
 
     override fun observeData() {
@@ -55,14 +59,25 @@ class UpdateNoteFragment @Inject constructor(
             onNoteReceived(it)
             setButtonVisibility(it)
         }
+        updateNoteViewModel.symbols.observe(viewLifecycleOwner){
+            onSymbolsCountReceived(it)
+        }
     }
 
 
     private fun onNoteReceived(note: Note) = with(binding) {
         val text = note.text
         val title = note.title
+        val symbols = text.length + title.length
         editTextNoteContent.setText(text)
         editTextPageTitle.setText(title)
+        tvModifiedDate.text = note.lastSavedUpdatedTime
+        tvSymbols.text = symbols.toString()
+
+    }
+    private fun onSymbolsCountReceived(amount: Int){
+        binding.tvSymbols.text = amount.toString()
+
     }
 
     private fun navigateToHome() {
@@ -84,18 +99,33 @@ class UpdateNoteFragment @Inject constructor(
         var titleChanged = false
         val initialText = note.text
         val initialTitle = note.title
-        editTextNoteContent.doOnTextChanged { text, _, _, count ->
+        editTextNoteContent.doOnTextChanged { text, _, _, _ ->
             textChanged = initialText != text.toString().trim().trimStart() && !text.isNullOrEmpty()
             btnSave.isVisible = (titleChanged || textChanged)
         }
-        editTextPageTitle.doOnTextChanged { text, _, _, count ->
+        editTextPageTitle.doOnTextChanged { text, _, _, _ ->
             titleChanged = initialTitle != text.toString().trim().trimStart() && !text.isNullOrEmpty()
             btnSave.isVisible = (titleChanged || textChanged)
         }
     }
+    private var editTextWatcher = object : TextWatcher {
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            val noteBodyLength = binding.editTextNoteContent.text.length
+            val noteTitleLength = binding.editTextPageTitle.text.length
+            updateNoteViewModel.incrementAmountOfSymbols(noteBodyLength + noteTitleLength)
+        }
+
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            val noteBodyLength = binding.editTextNoteContent.text.trim().length
+            val noteTitleLength = binding.editTextPageTitle.text.trim().length
+            updateNoteViewModel.incrementAmountOfSymbols(noteBodyLength + noteTitleLength)
+        }
+
+        override fun afterTextChanged(s: Editable?) {}
+
+    }
 
     companion object {
-        private const val DATE_WITH_YEAR = "dd MMMM yyyy"
         private const val DATE  = "dd MMMM HH:mm"
     }
 
