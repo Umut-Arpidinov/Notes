@@ -55,6 +55,13 @@ class NotesViewModel @Inject constructor(
             }
         )
     }
+    fun getNotesByKeyword(keyword: String){
+        makeRequest(
+            repository.getNotesByKeyword(keyword),
+            onSuccess = {notes -> _notes.value = notes},
+            onError = {it.printStackTrace()}
+        )
+    }
 
     fun getTime(pattern: String): String {
         val simpleDate = SimpleDateFormat(pattern, Locale("En"))

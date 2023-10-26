@@ -30,4 +30,8 @@ interface NotesDAO {
     @Query("UPDATE notes SET type =:type WHERE uid =:uid")
     fun updateNoteType(uid: Int, type: NoteType): Single<Unit>
 
+    @Query("SELECT * FROM notes WHERE text LIKE '%' || :keyword || '%' OR title LIKE '%' || :keyword || '%'")
+    fun getNotesByKeyword(keyword: String): Single<List<Note>>
+
+
 }

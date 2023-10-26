@@ -4,6 +4,7 @@ import android.os.Build
 import android.view.View
 import android.widget.PopupMenu
 import androidx.core.content.ContextCompat
+import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.notesapp.R
@@ -68,7 +69,7 @@ class NotesFragment @Inject constructor(
             binding.tvTitleRecentNote.text = type.name.lowercase()
             notesViewModel.getNotes(type)
         }
-
+        setUpSearchListener()
 
     }
 
@@ -79,30 +80,11 @@ class NotesFragment @Inject constructor(
         }
     }
 
-//
-//    private fun setOnSwipeListener(rvNotes: RecyclerView) {
-//        val callback = object : ItemTouchHelper.SimpleCallback(
-//            0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
-//        ) {
-//            override fun onMove(
-//                recyclerView: RecyclerView,
-//                viewHolder: RecyclerView.ViewHolder,
-//                target: RecyclerView.ViewHolder,
-//            ): Boolean {
-//                return false
-//            }
-//
-//            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-//                val pos = viewHolder.adapterPosition
-//                val note = notesAdapter.getNoteAt(pos)
-//
-//            }
-//
-//        }
-//        val itemTouchHelper = ItemTouchHelper(callback)
-//        itemTouchHelper.attachToRecyclerView(rvNotes)
-//    }
-
+    private fun setUpSearchListener(){
+        binding.editTextSearch.doOnTextChanged { text, start, before, count ->
+            notesViewModel.getNotesByKeyword(text.toString())
+        }
+    }
 
     private fun popUpMenu(v: View, uid: Int, position: Int, type: NoteType?) {
         val popUp = PopupMenu(requireContext(), v)

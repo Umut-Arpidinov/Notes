@@ -15,6 +15,8 @@ interface NotesRepository {
 
     fun getNoteById(uid: Int): Single<Note>
 
+    fun getNotesByKeyword(keyword: String): Single<List<Note>>
+
     fun saveNote(note: Note): Single<Unit>
 
     fun deleteNote(id: Int): Single<Unit>
