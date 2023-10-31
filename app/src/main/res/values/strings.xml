@@ -16,6 +16,7 @@
     <string name="msg_notes_title">Notes</string>
     <string name="title_date">22 December</string>
     <string name="symbols">%s symbols</string>
+    <string name="msg_notes_not_found">You don\'t have any notes yet! Create one ! </string>
     <string name="msg_all_notes">All Notes</string>
     <string name="msg_error_empty">Fields are empty</string>
     <string name="msg_favourites">Favourites</string>
