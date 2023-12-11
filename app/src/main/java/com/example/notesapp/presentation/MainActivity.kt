@@ -2,17 +2,12 @@ package com.example.notesapp.presentation
 
 import android.os.Bundle
 import android.view.View
-import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentFactory
-import androidx.fragment.app.commit
 import androidx.navigation.NavHost
-import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.notesapp.R
 import com.example.notesapp.databinding.ActivityMainBinding
-import com.example.notesapp.presentation.create_note.NewNoteFragment
-import com.example.notesapp.presentation.notes.NotesFragment
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
@@ -44,17 +39,18 @@ class MainActivity : AppCompatActivity() {
         bindingActivity.bottomNav.setupWithNavController(navController)
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
-
-            if (destination.id == R.id.newNoteFragment || destination.id == R.id.updateNoteFragment) {
-                bindingActivity.bottomNav.visibility = View.GONE
-            } else {
-                bindingActivity.bottomNav.visibility = View.VISIBLE
+            bindingActivity.bottomNav.visibility = when (destination.id) {
+                R.id.newNoteFragment,
+                R.id.updateNoteFragment,
+                R.id.loginFragment,
+                R.id.resetFragment,
+                R.id.createEventFragment,
+                R.id.registerFragment -> View.GONE
+                else -> View.VISIBLE
             }
         }
 
     }
-
-
 
 
     private fun initDaggerComponent() {

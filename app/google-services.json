@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "109568483845",
+    "project_id": "takenote-c943c",
+    "storage_bucket": "takenote-c943c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:109568483845:android:2af3a820a6a3fb5438f26c",
+        "android_client_info": {
+          "package_name": "com.example.notesapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBU7ZjBv_yL_9Xa7InPE4u4CAnPl-HJKow"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

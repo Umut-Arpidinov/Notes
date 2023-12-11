@@ -1,7 +1,7 @@
 package com.example.notesapp.data.local.database.enitites
 
 enum class NoteType {
-    HIDDEN,
+    HIDDEN ,
     TRASH,
     FAVOURITES,
     DEFAULT

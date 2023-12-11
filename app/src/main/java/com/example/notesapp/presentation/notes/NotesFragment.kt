@@ -24,7 +24,7 @@ class NotesFragment @Inject constructor(
     viewModelFactory: ViewModelFactory,
 ) : BaseFragment<FragmentNotesBinding>() {
 
-    private lateinit var notesAdapter: NotesAdapter
+    private var notesAdapter = NotesAdapter()
     private lateinit var notesCategoryAdapter: NotesCategoryAdapter
 
     override fun getViewBinding(): FragmentNotesBinding =
@@ -36,16 +36,13 @@ class NotesFragment @Inject constructor(
 
     override fun setUpViews() {
         super.setUpViews()
-        notesAdapter = NotesAdapter(requireContext())
         binding.notesRv.apply {
             adapter = notesAdapter
         }
         notesCategoryAdapter = NotesCategoryAdapter(getNotesCategories())
         binding.rvCategories.adapter = notesCategoryAdapter
         setUpCurrentTime()
-        notesViewModel.getDefaultNotes()
-
-
+        notesViewModel.getNotes(NoteType.DEFAULT)
     }
 
 
@@ -55,7 +52,6 @@ class NotesFragment @Inject constructor(
             notesAdapter.notifyItemChanged(position)
             val action = NotesFragmentDirections.actionNotesFragmentToUpdateNoteFragment(note.uid)
             findNavController().navigate(action)
-
         }
 
         notesAdapter.setOnNoteActionClickListener { uid, position, type, view ->
@@ -81,8 +77,8 @@ class NotesFragment @Inject constructor(
         }
     }
 
-    private fun setUpSearchListener(){
-        binding.editTextSearch.doOnTextChanged { text, start, before, count ->
+    private fun setUpSearchListener() {
+        binding.editTextSearch.doOnTextChanged { text, _, _, _ ->
             notesViewModel.getNotesByKeyword(text.toString())
         }
     }
@@ -145,15 +141,8 @@ class NotesFragment @Inject constructor(
                 ContextCompat.getDrawable(requireActivity(), R.drawable.ic_hidden),
                 ContextCompat.getColor(requireActivity(), R.color.blue),
                 NoteType.HIDDEN
-            ),
-            NotesCategory(
-                resources.getString(R.string.msg_trash),
-                ContextCompat.getDrawable(requireActivity(), R.drawable.ic_trash),
-                ContextCompat.getColor(requireActivity(), R.color.red),
-                NoteType.TRASH
-            ),
-
             )
+        )
     }
 
     private fun setUpCurrentTime() {
@@ -166,6 +155,6 @@ class NotesFragment @Inject constructor(
     }
 
     companion object {
-        private const val DATE  = "dd MMMM HH:mm"
+        private const val DATE = "dd MMMM HH:mm"
     }
 }

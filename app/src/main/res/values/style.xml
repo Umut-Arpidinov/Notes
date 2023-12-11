@@ -13,7 +13,7 @@
     </style>
     <style name="TitleDescriptionStyle">
         <item name="android:textColor">@color/black_2</item>
-        <item name="fontFamily">@font/nunito_sans_regular</item>
+        <item name="fontFamily">@font/nunito_sans_bold</item>
         <item name="android:textSize">14.96sp</item>
     </style>
     <style name="WelcomeCardViewStyle">
@@ -26,6 +26,17 @@
     </style>
     <style name="Circular">
         <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="InputFieldErrorStyle">
+        <item name="android:textColor">@color/red</item>
+        <item name="fontFamily">@font/nunito_sans_regular</item>
+        <item name="android:textSize">14.96sp</item>
+    </style>
+    <style name="WelcomeTextStyle">
+        <item name="android:textColor">@color/blue</item>
+        <item name="fontFamily">@font/nunito_sans_bold</item>
+        <item name="android:textSize">32.81sp</item>
     </style>
 
 </resources>

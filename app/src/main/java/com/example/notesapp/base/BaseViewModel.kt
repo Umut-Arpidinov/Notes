@@ -8,7 +8,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 
 abstract class BaseViewModel() : ViewModel() {
 
-    protected var compositeDisposable: CompositeDisposable = CompositeDisposable()
+    private var compositeDisposable: CompositeDisposable = CompositeDisposable()
 
 
     fun <T : Any> makeRequest(
@@ -25,6 +25,9 @@ abstract class BaseViewModel() : ViewModel() {
             )
         compositeDisposable.add(disposable)
     }
+
+
+
 
     override fun onCleared() {
         super.onCleared()

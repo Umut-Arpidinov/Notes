@@ -19,9 +19,12 @@ class NotesViewModel @Inject constructor(
     val notes: LiveData<List<Note>> = _notes
 
 
+
+
+
     fun getDefaultNotes() {
         makeRequest(
-            repository.getNotesByType(NoteType.DEFAULT),
+            repository.getNotesByType(NoteType.HIDDEN),
             onSuccess = { _notes.value = it },
             onError = { it.printStackTrace() }
         )

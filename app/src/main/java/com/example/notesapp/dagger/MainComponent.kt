@@ -3,6 +3,7 @@ package com.example.notesapp.dagger
 import android.content.Context
 import com.example.notesapp.base.BaseComponent
 import com.example.notesapp.dagger.module.DataBaseModule
+import com.example.notesapp.dagger.module.FireBaseModule
 import com.example.notesapp.dagger.module.FragmentModule
 import com.example.notesapp.dagger.module.RepositoryModule
 import com.example.notesapp.dagger.module.ViewModelModule
@@ -13,7 +14,7 @@ import dagger.Component
 
 
 @ApplicationScope
-@Component(modules = [DataBaseModule::class,RepositoryModule::class, ViewModelModule::class, FragmentModule::class])
+@Component(modules = [DataBaseModule::class,RepositoryModule::class, ViewModelModule::class, FragmentModule::class,FireBaseModule::class])
 interface MainComponent : BaseComponent<MainActivity>{
 
     @Component.Factory

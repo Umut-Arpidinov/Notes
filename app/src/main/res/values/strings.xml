@@ -14,6 +14,7 @@
     <string name="msg_back">Back</string>
     <string name="msg_search">Search</string>
     <string name="msg_notes_title">Notes</string>
+    <string name="msg_title_events">Events</string>
     <string name="title_date">22 December</string>
     <string name="symbols">%s symbols</string>
     <string name="msg_notes_not_found">You don\'t have any notes yet! Create one ! </string>
@@ -31,12 +32,34 @@
     <string name="msg_page_title">Page Title</string>
     <string name="msg_add_to_favorites">Add to Favorites</string>
     <string name="msg_remove_note">Remove Note</string>
+    <string name="msg_remove_event">Remove event</string>
     <string name="msg_hide_note">Hide Note</string>
     <string name="msg_search_not_found">No recent searches to display</string>
     <string name="msg_ux_ui_design">UX Deign</string>
     <string name="msg_lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam cum ligula justo.</string>
-
-
+    <string name="email">Email</string>
+    <string name="logo_desc">Logo description\n</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="forgot_password">Forgot your password ?</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="sign_in_info">Hello there, sign in to continue</string>
+    <string name="welcome_back">Welcome Back</string>
+    <string name="welcome_new">Welcome to us,</string>
+    <string name="sign_up_info">Hello there, create New account</string>
+    <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <string name="have_account">Have an account? </string>
+    <string name="create_account">Create account</string>
+    <string name="sign_in">Sign in</string>
+    <string name="reset_password">Reset password</string>
+    <string name="reset_hint">Enter your email to get password reset link</string>
+    <string name="tile">Tile</string>
+    <string name="message">Message</string>
+    <string name="_28_05_2022">28.05.2022</string>
+    <string name="_23_45pm">23:45pm</string>
+    <string name="tv_message">Message</string>
+    <string name="to_read_a_book">To read a book</string>
+    <string name="save_event">Save event</string>
 
 
 </resources>

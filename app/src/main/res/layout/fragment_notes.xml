@@ -106,7 +106,7 @@
         app:reverseLayout="true"
         app:stackFromEnd="true"
         tools:itemCount="30"
-        tools:listitem="@layout/item_note" />
+        tools:listitem="@layout/item_note_all" />
 
     <TextView
         android:id="@+id/tv_notes_not_found"

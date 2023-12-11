@@ -4,46 +4,115 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/hav_main"
     app:startDestination="@id/notesFragment">
-
     <fragment
-        android:id="@+id/notesFragment"
-        android:name="com.example.notesapp.presentation.notes.NotesFragment"
-        tools:layout="@layout/fragment_notes"
-        android:label="NotesFragment">
+        android:id="@+id/loginFragment"
+        android:name="com.example.notesapp.presentation.authentication.LoginFragment"
+        android:label="LoginFragment"
+        tools:layout="@layout/fragment_login" >
         <action
-            android:id="@+id/action_notesFragment_to_updateNoteFragment"
-            app:destination="@id/updateNoteFragment"
-            app:exitAnim="@anim/to_left"
+            android:id="@+id/action_loginFragment_to_notesFragment"
+            app:destination="@id/notesFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_resetFragment"
+            app:destination="@id/resetFragment"
             app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
             app:popEnterAnim="@anim/from_left"
             app:popExitAnim="@anim/to_right"
             />
     </fragment>
     <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.example.notesapp.presentation.authentication.RegisterFragment"
+        android:label="RegisterFragment"
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_registerFragment_to_notesFragment"
+            app:destination="@id/notesFragment"
+
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/notesFragment"
+        android:name="com.example.notesapp.presentation.notes.NotesFragment"
+        android:label="NotesFragment"
+        tools:layout="@layout/fragment_notes">
+        <action
+            android:id="@+id/action_notesFragment_to_updateNoteFragment"
+            app:destination="@id/updateNoteFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
+        <action
+            android:id="@+id/action_notesFragment_to_updateNoteFragmentExam"
+            app:destination="@id/updateNoteFragmentExam" />
+    </fragment>
+    <fragment
         android:id="@+id/searchFragment"
-        tools:layout="@layout/fragment_search"
         android:name="com.example.notesapp.presentation.search.SearchFragment"
-        android:label="SearchFragment" />
+        android:label="SearchFragment"
+        tools:layout="@layout/fragment_search" />
     <fragment
         android:id="@+id/eventFragment"
-        tools:layout="@layout/fragment_event"
         android:name="com.example.notesapp.presentation.event.EventFragment"
-        android:label="EventFragment" />
+        android:label="EventFragment"
+        tools:layout="@layout/fragment_event" >
+        <action
+            android:id="@+id/action_eventFragment_to_createEventFragment"
+            app:destination="@id/createEventFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right"
+            />
+    </fragment>
     <fragment
         android:id="@+id/newNoteFragment"
-        tools:layout="@layout/fragment_new_note"
         android:name="com.example.notesapp.presentation.create_note.NewNoteFragment"
-        android:label="NewNoteFragment">
+        android:label="NewNoteFragment"
+        tools:layout="@layout/fragment_new_note">
+
     </fragment>
     <fragment
         android:id="@+id/updateNoteFragment"
-        tools:layout="@layout/fragment_note_update"
         android:name="com.example.notesapp.presentation.update_note.UpdateNoteFragment"
-        android:label="UpdateNoteFragment">
+        android:label="UpdateNoteFragment"
+        tools:layout="@layout/fragment_note_update">
         <argument
             android:name="uid"
             app:argType="integer"
-            app:nullable="false"
-            />
+            app:nullable="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateNoteFragmentExam"
+        android:name="com.example.notesapp.presentation.update_note.UpdateNoteFragmentExam"
+        android:label="UpdateNoteFragmentExam"
+        tools:layout="@layout/fragment_update_notes_exam" />
+
+    <action
+        android:id="@+id/action_global_loginFragment"
+        app:destination="@id/loginFragment"
+        />
+    <action
+        android:id="@+id/action_global_registerFragment"
+        app:destination="@id/registerFragment"
+        app:enterAnim="@anim/from_right"
+        app:exitAnim="@anim/to_left"
+        app:popEnterAnim="@anim/from_left"
+        app:popExitAnim="@anim/to_right"
+        />
+    <fragment
+        android:id="@+id/resetFragment"
+        android:name="com.example.notesapp.presentation.reset_password.ResetFragment"
+        android:label="ResetFragment" />
+    <fragment
+        android:id="@+id/createEventFragment"
+        android:name="com.example.notesapp.presentation.event.CreateEventFragment"
+        android:label="CreateEventFragment" >
+        <action
+            android:id="@+id/action_createEventFragment_to_eventFragment"
+            app:destination="@id/eventFragment" />
     </fragment>
 </navigation>
